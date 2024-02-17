@@ -13,3 +13,70 @@
 .projects-title {
     font-size: 2rem;
 }
+
+.projects-container {
+    max-width: 1200px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.project-card {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.project-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.project-title {
+    font-size: 1.4rem;
+}
+
+.project-description {
+    margin: 1.5rem 0;
+}
+
+.project-technologies {
+    font-style: italic;
+    font-size: 0.8rem;
+}
+
+.project-img {
+    margin: 0 1rem;
+}
+
+.project-img > img {
+    width: max(100%, 320px);
+    height: auto;
+    transition: transform 0.5s;
+}
+
+.project-links {
+    display: flex;
+    gap: 1rem;
+}
+
+.project-button {
+    width: 120px;
+    height: 30px;
+    padding: 1rem;
+    border-radius: 2rem;
+    background-color: var(--accent-color); 
+    transition: all .4s;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+}
+
+.project-button:hover {
+    color: var(--main-color-light);
+    background-color: var(--secondary-color);
+    box-shadow: 1px 1px 8px var(--main-color-dark);
+}

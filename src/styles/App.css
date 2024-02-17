@@ -1,0 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Chakra+Petch:wght@400;500;600;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    border: 0;
+    vertical-align: baseline;
+    list-style: none;
+    text-decoration: none;
+    color: unset;
+}
+
+:root {
+    --main-color-dark: #1F2421;
+    --main-color-light: #DCE1DE;
+    --secondary-color: #216869;
+    --accent-color: #49A078;
+    --highlight-color: #9CC5A1;
+}
+
+body {
+    background-color: var(--main-color-dark);
+}

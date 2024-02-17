@@ -1,0 +1,35 @@
+.home-section {
+    color: var(--main-color-light);
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.presentation-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin: 0 20vw;
+}
+
+.presentation:nth-child(2) {
+    font-size: 5.5rem;
+}
+
+.presentation:nth-child(3) {
+    font-size: 1.3rem;
+}
+
+.channels > ul {
+    display: flex;
+    gap: 2.2rem;
+}
+
+.channels li {
+    transform: scale(1.5);
+}

@@ -40,6 +40,11 @@ export default function Header() {
     };
   }, []);
 
+  const handleRedirect = (id) => {
+    const section = document.getElementById(id);
+    section.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <header>
       <nav className={`nav-menu ${shrinkNavbar ? "shrink" : ""}`}>
@@ -48,15 +53,17 @@ export default function Header() {
             className={`nav-item ${
               activeSection === "projects" ? "active" : ""
             }`}
+            onClick={() => handleRedirect("projects")}
           >
             Projects
           </li>
           <li
             className={`nav-item ${activeSection === "about" ? "active" : ""}`}
+            onClick={() => handleRedirect("about")}
           >
             About Me
           </li>
-          <li className="nav-item home">
+          <li className="nav-item home" onClick={() => handleRedirect("home")}>
             <img
               src="https://i.imgur.com/Qbk1CWd.png"
               alt="alien-greeting"
@@ -68,6 +75,7 @@ export default function Header() {
             className={`nav-item ${
               activeSection === "contact" ? "active" : ""
             }`}
+            onClick={() => handleRedirect("contact")}
           >
             Contact
           </li>

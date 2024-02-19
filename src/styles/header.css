@@ -64,3 +64,35 @@ header {
     font-weight: 500;
     flex-direction: row;
 }
+
+.cv-lang {
+    display: none;
+    position: absolute;
+    top: 3.5rem;
+    background-color: var(--main-color-light);
+    padding: 0 1rem;
+    border-radius: 0.4rem;
+}
+
+.cv-item {
+    flex-direction: row;
+}
+
+.cv-item:hover .cv-lang{
+    display: initial;
+}
+
+.nav-menu.shrink .cv-lang {
+    background-color: var(--main-color-dark);
+}
+
+.lang-option {
+    margin: 1rem;
+    font-size: 0.8rem;
+    width: 70px;
+    text-align: center;
+}
+
+.lang-option:hover {
+    text-shadow: 0 0 5px var(--highlight-color);
+}

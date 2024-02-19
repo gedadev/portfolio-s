@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import "../styles/header.css";
+import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 
 export default function Header() {
   const [shrinkNavbar, setShrinkNavbar] = useState(false);
@@ -45,6 +46,10 @@ export default function Header() {
     section.scrollIntoView({ behavior: "smooth" });
   };
 
+  const goToCV = (url) => {
+    window.open(url, "_blank");
+  };
+
   return (
     <header>
       <nav className={`nav-menu ${shrinkNavbar ? "shrink" : ""}`}>
@@ -79,7 +84,33 @@ export default function Header() {
           >
             Contact
           </li>
-          <li className="nav-item">My CV</li>
+          <li className="nav-item cv-item">
+            My CV <ExpandMoreIcon />
+            <div className="cv-lang">
+              <ul>
+                <li
+                  className="lang-option"
+                  onClick={() =>
+                    goToCV(
+                      "https://drive.google.com/file/d/1r7TfEenzDz0Hv7UbYdxYNJGKU73Wo5pP/view?usp=sharing"
+                    )
+                  }
+                >
+                  🇺🇸 English
+                </li>
+                <li
+                  className="lang-option"
+                  onClick={() =>
+                    goToCV(
+                      "https://drive.google.com/file/d/1Cggp-gEBZD7py5wzUdUL-XaSCZ9YkfJ3/view?usp=sharing"
+                    )
+                  }
+                >
+                  🇲🇽 Español
+                </li>
+              </ul>
+            </div>
+          </li>
         </ul>
       </nav>
     </header>

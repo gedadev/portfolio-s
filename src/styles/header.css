@@ -13,6 +13,15 @@ header {
     background-color: var(--main-color-light);
     border-radius: 0.8rem;
     z-index: 1;
+    transition: all 0.5s ease;
+}
+
+.nav-menu.shrink {
+    background-color: var(--main-color-dark);
+    color: var(--main-color-light);
+    transform: scale(0.9);
+    top: -0.2rem;
+    border-radius: 0 0 0.8rem 0.8rem;
 }
 
 .nav-menu > ul {
@@ -25,12 +34,21 @@ header {
     display: flex;
     align-items: center;
     justify-content: center;
+    flex-direction: column;
     gap: 0.6rem;
     padding: 0.5rem;
     margin: 0 1rem;
     cursor: pointer;
     border-radius: 1rem;
-    transition: transform 0.2s ease;
+    transition: all 0.2s ease;
+}
+
+.nav-item.active::after {
+    content: "";
+    position: absolute;
+    top: 2.5rem;
+    width: 4rem;
+    border-top: 2px solid var(--highlight-color);
 }
 
 .nav-item:hover {
@@ -44,4 +62,5 @@ header {
 .home {
     font-size: 2rem;
     font-weight: 500;
+    flex-direction: row;
 }

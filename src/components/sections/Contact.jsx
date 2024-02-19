@@ -5,7 +5,7 @@ import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 
 export default function Contact() {
   return (
-    <section className="contact-section">
+    <section className="contact-section" id="contact">
       <h2>Ready to collaborate?</h2>
       <p>
         You can reach me by email, or leave a message on{" "}

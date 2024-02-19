@@ -5,7 +5,7 @@ import EmailIcon from "@mui/icons-material/Email";
 
 export default function Home() {
   return (
-    <section className="home-section">
+    <section className="home-section" id="home">
       <div className="presentation-container">
         <p className="presentation">Hi there, I&apos;m</p>
         <p className="presentation">Gedaias Jair</p>

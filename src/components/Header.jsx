@@ -5,114 +5,167 @@ import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 export default function Header() {
   const [shrinkNavbar, setShrinkNavbar] = useState(false);
   const [activeSection, setActiveSection] = useState("");
+  const [isMobile, setIsMobile] = useState();
+  const [menuIsActive, setMenuIsActive] = useState(false);
+  const links = {
+    homeImage: "https://i.imgur.com/Qbk1CWd.png",
+    enCV: "https://drive.google.com/file/d/1r7TfEenzDz0Hv7UbYdxYNJGKU73Wo5pP/view?usp=sharing",
+    esCV: "https://drive.google.com/file/d/1Cggp-gEBZD7py5wzUdUL-XaSCZ9YkfJ3/view?usp=sharing",
+  };
 
   useEffect(() => {
-    const handleScroll = () => {
-      window.scrollY > window.innerHeight * 0.9
-        ? setShrinkNavbar(true)
-        : setShrinkNavbar(false);
-
-      const sections = ["projects", "about", "contact"];
-
-      const sectionOffsets = sections.map((section) => ({
-        name: section,
-        offsetTop: document.getElementById(section).offsetTop,
-        offsetBottom:
-          document.getElementById(section).offsetTop +
-          document.getElementById(section).offsetHeight,
-      }));
-
-      for (const section of sectionOffsets) {
-        console.log(window.scrollY, section.offsetTop - 100);
-        if (window.scrollY > section.offsetTop - 200) {
-          setActiveSection(section.name);
-        }
-      }
-
-      if (window.scrollY < window.innerHeight - 200) {
-        setActiveSection("");
-      }
-    };
+    handleView();
 
     window.addEventListener("scroll", handleScroll);
+    window.addEventListener("resize", handleView);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleView);
     };
   }, []);
+
+  const handleScroll = () => {
+    window.scrollY > window.innerHeight * 0.9
+      ? setShrinkNavbar(true)
+      : setShrinkNavbar(false);
+
+    const sections = ["projects", "about", "contact"];
+
+    const sectionOffsets = sections.map((section) => ({
+      name: section,
+      offsetTop: document.getElementById(section).offsetTop,
+    }));
+
+    for (const section of sectionOffsets) {
+      if (window.scrollY > section.offsetTop - 200) {
+        setActiveSection(section.name);
+      }
+    }
+
+    if (window.scrollY < window.innerHeight - 200) {
+      setActiveSection("");
+    }
+  };
+
+  const handleView = () => {
+    setIsMobile(window.innerWidth <= 700);
+  };
 
   const handleRedirect = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth" });
+    isMobile && id != "home" ? setMenuIsActive(!menuIsActive) : null;
   };
 
   const goToCV = (url) => {
     window.open(url, "_blank");
   };
 
+  const handleMenuActivation = () => {
+    setMenuIsActive(!menuIsActive);
+  };
+
   return (
     <header>
-      <nav className={`nav-menu ${shrinkNavbar ? "shrink" : ""}`}>
-        <ul>
-          <li
-            className={`nav-item ${
-              activeSection === "projects" ? "active" : ""
-            }`}
-            onClick={() => handleRedirect("projects")}
-          >
-            Projects
-          </li>
-          <li
-            className={`nav-item ${activeSection === "about" ? "active" : ""}`}
-            onClick={() => handleRedirect("about")}
-          >
-            About Me
-          </li>
-          <li className="nav-item home" onClick={() => handleRedirect("home")}>
+      {isMobile ? (
+        <div className="mobile-menu">
+          <span className="home-link" onClick={() => handleRedirect("home")}>
             <img
-              src="https://i.imgur.com/Qbk1CWd.png"
-              alt="alien-greeting"
+              src={links.homeImage}
+              alt="astronaut-greeting"
               className="home-img"
             />
-            Home
-          </li>
-          <li
-            className={`nav-item ${
-              activeSection === "contact" ? "active" : ""
-            }`}
-            onClick={() => handleRedirect("contact")}
+          </span>
+          <div
+            className={`ham-menu ${menuIsActive ? "active" : ""}`}
+            onClick={handleMenuActivation}
           >
-            Contact
-          </li>
-          <li className="nav-item cv-item">
-            My CV <ExpandMoreIcon />
-            <div className="cv-lang">
-              <ul>
-                <li
-                  className="lang-option"
-                  onClick={() =>
-                    goToCV(
-                      "https://drive.google.com/file/d/1r7TfEenzDz0Hv7UbYdxYNJGKU73Wo5pP/view?usp=sharing"
-                    )
-                  }
-                >
-                  🇺🇸 English
-                </li>
-                <li
-                  className="lang-option"
-                  onClick={() =>
-                    goToCV(
-                      "https://drive.google.com/file/d/1Cggp-gEBZD7py5wzUdUL-XaSCZ9YkfJ3/view?usp=sharing"
-                    )
-                  }
-                >
-                  🇲🇽 Español
-                </li>
-              </ul>
-            </div>
-          </li>
-        </ul>
-      </nav>
+            <span className="bar"></span>
+            <span className="bar"></span>
+            <span className="bar"></span>
+          </div>
+          <nav className={`mobile-nav ${menuIsActive ? "active" : ""}`}>
+            <ul>
+              <li
+                className="nav-item"
+                onClick={() => handleRedirect("projects")}
+              >
+                Projects
+              </li>
+              <li className="nav-item" onClick={() => handleRedirect("about")}>
+                About Me
+              </li>
+              <li
+                className="nav-item"
+                onClick={() => handleRedirect("contact")}
+              >
+                Contact
+              </li>
+              <li className="nav-item">My CV</li>
+            </ul>
+          </nav>
+        </div>
+      ) : (
+        <nav className={`nav-menu ${shrinkNavbar ? "shrink" : ""}`}>
+          <ul>
+            <li
+              className={`nav-item ${
+                activeSection === "projects" ? "active" : ""
+              }`}
+              onClick={() => handleRedirect("projects")}
+            >
+              Projects
+            </li>
+            <li
+              className={`nav-item ${
+                activeSection === "about" ? "active" : ""
+              }`}
+              onClick={() => handleRedirect("about")}
+            >
+              About Me
+            </li>
+            <li
+              className="nav-item home"
+              onClick={() => handleRedirect("home")}
+            >
+              <img
+                src={links.homeImage}
+                alt="astronaut-greeting"
+                className="home-img"
+              />
+              Home
+            </li>
+            <li
+              className={`nav-item ${
+                activeSection === "contact" ? "active" : ""
+              }`}
+              onClick={() => handleRedirect("contact")}
+            >
+              Contact
+            </li>
+            <li className="nav-item cv-item">
+              My CV <ExpandMoreIcon />
+              <div className="cv-lang">
+                <ul>
+                  <li
+                    className="lang-option"
+                    onClick={() => goToCV(links.enCV)}
+                  >
+                    🇺🇸 English
+                  </li>
+                  <li
+                    className="lang-option"
+                    onClick={() => goToCV(links.esCV)}
+                  >
+                    🇲🇽 Español
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }

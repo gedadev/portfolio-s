@@ -4,6 +4,19 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
 
 export default function Home() {
+  const redirectToGithub = () => {
+    window.open("https://github.com/gedadev", "_blank");
+  };
+
+  const redirectToLinkedin = () => {
+    window.open("https://www.linkedin.com/in/gedabg/", "_blank");
+  };
+
+  const scrollToContact = () => {
+    const contactSection = document.getElementById("contact");
+    contactSection.scrollIntoView({ behavior: "smooth" });
+  };
+
   return (
     <section className="home-section" id="home">
       <div className="presentation-container">
@@ -13,19 +26,15 @@ export default function Home() {
       </div>
       <div className="channels">
         <ul>
-          <li>
-            <a href="">
-              <GitHubIcon />
-            </a>
+          <li onClick={redirectToGithub}>
+            <GitHubIcon />
           </li>
-          <li>
-            <a href="">
-              <LinkedInIcon />
-            </a>
+          <li onClick={redirectToLinkedin}>
+            <LinkedInIcon />
           </li>
         </ul>
       </div>
-      <button className="button">
+      <button className="button" onClick={scrollToContact}>
         Email Me <EmailIcon />
       </button>
     </section>

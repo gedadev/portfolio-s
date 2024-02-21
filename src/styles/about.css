@@ -62,3 +62,34 @@
 .about-description {
     margin: 1rem 0;
 }
+
+@media(max-width: 700px) {
+    .about-container {
+        display: flex;
+        flex-direction: column;
+        gap: 2rem;
+        flex-grow: 1;
+        margin: 6vh auto;
+        width: 100%;
+    }
+
+    .about-info {
+        text-align: center;
+    }
+
+    .about-description {
+        text-align: start;
+    }
+
+    .technologies-container {
+        margin: 2rem 0;
+    }
+
+    .technologies-container > ul {
+        justify-content: center;
+    }
+
+    .technologies-container > h3 {
+        font-size: 1.2rem;
+    }
+}

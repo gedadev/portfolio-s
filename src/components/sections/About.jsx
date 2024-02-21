@@ -14,7 +14,7 @@ export default function About() {
             code.
           </p>
           <div className="technologies-container">
-            <h3>Web technologies I&apos;m familiar with:</h3>
+            <h3>Technologies I&apos;m familiar with:</h3>
             <ul>
               {technologies.map((element) => (
                 <li key={element.name} className="tech-item">

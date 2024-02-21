@@ -7,6 +7,7 @@ export default function Header() {
   const [activeSection, setActiveSection] = useState("");
   const [isMobile, setIsMobile] = useState();
   const [menuIsActive, setMenuIsActive] = useState(false);
+  const [langSelectorActive, setLangSelectorActive] = useState(false);
   const links = {
     homeImage: "https://i.imgur.com/Qbk1CWd.png",
     enCV: "https://drive.google.com/file/d/1r7TfEenzDz0Hv7UbYdxYNJGKU73Wo5pP/view?usp=sharing",
@@ -55,15 +56,21 @@ export default function Header() {
   const handleRedirect = (id) => {
     const section = document.getElementById(id);
     section.scrollIntoView({ behavior: "smooth" });
-    isMobile && id != "home" ? setMenuIsActive(!menuIsActive) : null;
+    isMobile && id != "home" ? handleMenuActivation() : null;
   };
 
   const goToCV = (url) => {
     window.open(url, "_blank");
+    isMobile ? handleMenuActivation() : null;
   };
 
   const handleMenuActivation = () => {
     setMenuIsActive(!menuIsActive);
+    langSelectorActive ? handleCVLanguage() : null;
+  };
+
+  const handleCVLanguage = () => {
+    setLangSelectorActive(!langSelectorActive);
   };
 
   return (
@@ -86,7 +93,9 @@ export default function Header() {
             <span className="bar"></span>
           </div>
           <nav className={`mobile-nav ${menuIsActive ? "active" : ""}`}>
-            <ul>
+            <ul
+              className={`mobile-navbar ${langSelectorActive ? "active" : ""}`}
+            >
               <li
                 className="nav-item"
                 onClick={() => handleRedirect("projects")}
@@ -102,7 +111,28 @@ export default function Header() {
               >
                 Contact
               </li>
-              <li className="nav-item">My CV</li>
+              <li className="nav-item" onClick={handleCVLanguage}>
+                My CV
+              </li>
+            </ul>
+            <ul
+              className={`mobile-lang-nav ${
+                langSelectorActive ? "active" : ""
+              }`}
+              // onClick={handleCVLanguage}
+            >
+              <li
+                className="lang-option mobile"
+                onClick={() => goToCV(links.enCV)}
+              >
+                🇺🇸 English
+              </li>
+              <li
+                className="lang-option mobile"
+                onClick={() => goToCV(links.esCV)}
+              >
+                🇲🇽 Español
+              </li>
             </ul>
           </nav>
         </div>

@@ -58,6 +58,7 @@
     grid-template-rows: repeat(2, 1fr);
     gap: 1rem;
     justify-items: center;
+    max-width: min(500px, 90%);
 }
 
 .send-button {
@@ -67,4 +68,10 @@
 
 .compose-button, .copy-button {
     width: 100%;
+}
+
+@media(max-width: 700px) {
+    .contact-section {
+        padding: 6vh 0;
+    }
 }

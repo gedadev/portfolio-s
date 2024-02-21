@@ -2,16 +2,9 @@ import "../../styles/home.css";
 import GitHubIcon from "@mui/icons-material/GitHub";
 import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import EmailIcon from "@mui/icons-material/Email";
+import PropTypes from "prop-types";
 
-export default function Home() {
-  const redirectToGithub = () => {
-    window.open("https://github.com/gedadev", "_blank");
-  };
-
-  const redirectToLinkedin = () => {
-    window.open("https://www.linkedin.com/in/gedabg/", "_blank");
-  };
-
+export default function Home({ redirectToGithub, redirectToLinkedin }) {
   const scrollToContact = () => {
     const contactSection = document.getElementById("contact");
     contactSection.scrollIntoView({ behavior: "smooth" });
@@ -40,3 +33,8 @@ export default function Home() {
     </section>
   );
 }
+
+Home.propTypes = {
+  redirectToGithub: PropTypes.func,
+  redirectToLinkedin: PropTypes.func,
+};

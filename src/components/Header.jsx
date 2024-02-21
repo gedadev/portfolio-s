@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import "../styles/header.css";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
+import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
 
 export default function Header() {
   const [shrinkNavbar, setShrinkNavbar] = useState(false);
@@ -111,15 +112,14 @@ export default function Header() {
               >
                 Contact
               </li>
-              <li className="nav-item" onClick={handleCVLanguage}>
-                My CV
+              <li className="nav-item cv-item" onClick={handleCVLanguage}>
+                My CV <KeyboardArrowRightIcon />
               </li>
             </ul>
             <ul
               className={`mobile-lang-nav ${
                 langSelectorActive ? "active" : ""
               }`}
-              // onClick={handleCVLanguage}
             >
               <li
                 className="lang-option mobile"

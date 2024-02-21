@@ -12,6 +12,12 @@
 
 .linkedin-link {
     transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.linkedin-link svg {
+    transform: scale(0.7);
+    vertical-align: text-bottom;
 }
 
 .linkedin-link:hover {

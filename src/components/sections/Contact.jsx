@@ -2,21 +2,18 @@ import "../../styles/contact.css";
 import SendIcon from "@mui/icons-material/Send";
 import CreateIcon from "@mui/icons-material/Create";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import PropTypes from "prop-types";
+import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 
-export default function Contact() {
+export default function Contact({ redirectToLinkedin }) {
   return (
     <section className="contact-section" id="contact">
       <h2>Ready to collaborate?</h2>
       <p>
         You can reach me by email, or leave a message on{" "}
-        <a
-          href="https://www.linkedin.com/in/gedabg/"
-          target="_blank"
-          rel="noreferrer"
-          className="linkedin-link"
-        >
-          LinkedIn
-        </a>
+        <span className="linkedin-link" onClick={redirectToLinkedin}>
+          LinkedIn <OpenInNewIcon />
+        </span>
       </p>
       <form action="" className="contact-form">
         <div className="input-container">
@@ -66,3 +63,7 @@ export default function Contact() {
     </section>
   );
 }
+
+Contact.propTypes = {
+  redirectToLinkedin: PropTypes.func,
+};

@@ -72,6 +72,17 @@
     width: 150px;
 }
 
+.send-button:disabled {
+    opacity: 0.5;
+    cursor: auto;
+}
+
+.send-button:disabled:hover {
+    background-color: var(--accent-color);
+    color: var(--main-color-light);
+    box-shadow: none;
+}
+
 .compose-button, .copy-button {
     width: 100%;
 }

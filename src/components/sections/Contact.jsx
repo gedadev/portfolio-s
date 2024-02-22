@@ -4,7 +4,7 @@ import CreateIcon from "@mui/icons-material/Create";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import PropTypes from "prop-types";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 export default function Contact({ redirectToLinkedin }) {
   const [formData, setFormData] = useState({
@@ -13,6 +13,22 @@ export default function Contact({ redirectToLinkedin }) {
     message: "",
   });
   const [errorMessage, setErrorMessage] = useState({});
+  const [buttonDisabled, setButtonDisabled] = useState(true);
+
+  useEffect(() => {
+    const isEmpty = (value) => value.trim() === "";
+
+    if (
+      !isEmpty(formData.name) &&
+      !isEmpty(formData.email) &&
+      !isEmpty(formData.message) &&
+      emailIsValid(formData.email)
+    ) {
+      setButtonDisabled(false);
+    } else {
+      setButtonDisabled(true);
+    }
+  }, [formData]);
 
   const handleValues = (e) => {
     const { name, value } = e.target;
@@ -34,23 +50,8 @@ export default function Contact({ redirectToLinkedin }) {
 
   const validateOnSubmit = (e) => {
     e.preventDefault();
-    const errors = {};
 
-    if (!formData.name.trim()) {
-      errors.name = "This field is required";
-    }
-    if (!formData.email.trim()) {
-      errors.email = "This field is required";
-    } else if (!emailIsValid(formData.email)) {
-      errors.email = "Enter a valid email address";
-    }
-    if (!formData.message.trim()) {
-      errors.message = "This field is required";
-    }
-
-    if (Object.entries(errors).length > 0) {
-      setErrorMessage(errors);
-    } else {
+    if (e.target.checkValidity()) {
       console.log("Message sent");
       setFormData({
         name: "",
@@ -92,6 +93,7 @@ export default function Contact({ redirectToLinkedin }) {
             autoComplete="off"
             onChange={handleValues}
             value={formData.name}
+            required
           />
           {errorMessage.name ? (
             <span className="error-msg">{errorMessage.name}</span>
@@ -107,6 +109,7 @@ export default function Contact({ redirectToLinkedin }) {
             autoComplete="off"
             onChange={handleValues}
             value={formData.email}
+            required
           />
           {errorMessage.email ? (
             <span className="error-msg">{errorMessage.email}</span>
@@ -122,6 +125,7 @@ export default function Contact({ redirectToLinkedin }) {
             placeholder="Start typing..."
             onChange={handleValues}
             value={formData.message}
+            required
           ></textarea>
           {errorMessage.message ? (
             <span className="error-msg">{errorMessage.message}</span>
@@ -133,6 +137,7 @@ export default function Contact({ redirectToLinkedin }) {
           className="button send-button"
           type="submit"
           form="contact-form"
+          disabled={buttonDisabled}
         >
           Send <SendIcon />
         </button>

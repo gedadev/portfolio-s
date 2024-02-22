@@ -2,6 +2,7 @@ import "../../styles/contact.css";
 import SendIcon from "@mui/icons-material/Send";
 import CreateIcon from "@mui/icons-material/Create";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
+import CheckIcon from "@mui/icons-material/Check";
 import PropTypes from "prop-types";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useEffect, useState } from "react";
@@ -14,6 +15,7 @@ export default function Contact({ redirectToLinkedin }) {
   });
   const [errorMessage, setErrorMessage] = useState({});
   const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [emailCopied, setEmailCopied] = useState();
 
   useEffect(() => {
     const isEmpty = (value) => value.trim() === "";
@@ -67,6 +69,13 @@ export default function Contact({ redirectToLinkedin }) {
     return pattern.test(email);
   };
 
+  const handleClipboard = async () => {
+    const emailAddress = "gedaias@geda.dev";
+
+    await navigator.clipboard.writeText(emailAddress);
+    setEmailCopied(true);
+  };
+
   return (
     <section className="contact-section" id="contact">
       <h2>Ready to collaborate?</h2>
@@ -95,9 +104,9 @@ export default function Contact({ redirectToLinkedin }) {
             value={formData.name}
             required
           />
-          {errorMessage.name ? (
+          {errorMessage.name && (
             <span className="error-msg">{errorMessage.name}</span>
-          ) : null}
+          )}
         </div>
         <div className="input-container">
           <label htmlFor="email">Your email: (*)</label>
@@ -111,9 +120,9 @@ export default function Contact({ redirectToLinkedin }) {
             value={formData.email}
             required
           />
-          {errorMessage.email ? (
+          {errorMessage.email && (
             <span className="error-msg">{errorMessage.email}</span>
-          ) : null}
+          )}
         </div>
         <div className="input-container">
           <label htmlFor="message">Your message: (*)</label>
@@ -127,9 +136,9 @@ export default function Contact({ redirectToLinkedin }) {
             value={formData.message}
             required
           ></textarea>
-          {errorMessage.message ? (
+          {errorMessage.message && (
             <span className="error-msg">{errorMessage.message}</span>
-          ) : null}
+          )}
         </div>
       </form>
       <div className="contact-buttons">
@@ -141,11 +150,26 @@ export default function Contact({ redirectToLinkedin }) {
         >
           Send <SendIcon />
         </button>
-        <button className="button compose-button">
+        <button
+          className="button compose-button"
+          onClick={() =>
+            window.open("mailto:gedaias@geda.dev?subject=Contact from geda.dev")
+          }
+        >
           Compose in your app <CreateIcon />
         </button>
-        <button className="button copy-button">
-          Copy email to clipboard <ContentCopyIcon />
+        <button className="button copy-button" onClick={handleClipboard}>
+          {emailCopied ? (
+            <>
+              Email Copied
+              <CheckIcon />
+            </>
+          ) : (
+            <>
+              Copy email to clipboard
+              <ContentCopyIcon />
+            </>
+          )}
         </button>
       </div>
     </section>

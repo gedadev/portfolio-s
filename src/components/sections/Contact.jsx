@@ -12,10 +12,58 @@ export default function Contact({ redirectToLinkedin }) {
     email: "",
     message: "",
   });
+  const [errorMessage, setErrorMessage] = useState({});
 
   const handleValues = (e) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
+    validateOnInput(e);
+  };
+
+  const validateOnInput = (e) => {
+    const { name, value } = e.target;
+    const errors = {};
+
+    if (!value.trim()) {
+      errors[name] = "This field is required";
+    } else if (name === "email" && !emailIsValid(value)) {
+      errors.email = "Enter a valid email address";
+    }
+    setErrorMessage(errors);
+  };
+
+  const validateOnSubmit = (e) => {
+    e.preventDefault();
+    const errors = {};
+
+    if (!formData.name.trim()) {
+      errors.name = "This field is required";
+    }
+    if (!formData.email.trim()) {
+      errors.email = "This field is required";
+    } else if (!emailIsValid(formData.email)) {
+      errors.email = "Enter a valid email address";
+    }
+    if (!formData.message.trim()) {
+      errors.message = "This field is required";
+    }
+
+    if (Object.entries(errors).length > 0) {
+      setErrorMessage(errors);
+    } else {
+      console.log("Message sent");
+      setFormData({
+        name: "",
+        email: "",
+        message: "",
+      });
+      setErrorMessage({});
+    }
+  };
+
+  const emailIsValid = (email) => {
+    const pattern = /\b[\w.-]+@[\w.-]+\.\w{2,4}\b/;
+    return pattern.test(email);
   };
 
   return (
@@ -27,7 +75,13 @@ export default function Contact({ redirectToLinkedin }) {
           LinkedIn <OpenInNewIcon />
         </span>
       </p>
-      <form action="" className="contact-form">
+      <form
+        action=""
+        className="contact-form"
+        onSubmit={validateOnSubmit}
+        id="contact-form"
+        noValidate
+      >
         <div className="input-container">
           <label htmlFor="name">Your name: (*)</label>
           <input
@@ -39,6 +93,9 @@ export default function Contact({ redirectToLinkedin }) {
             onChange={handleValues}
             value={formData.name}
           />
+          {errorMessage.name ? (
+            <span className="error-msg">{errorMessage.name}</span>
+          ) : null}
         </div>
         <div className="input-container">
           <label htmlFor="email">Your email: (*)</label>
@@ -51,6 +108,9 @@ export default function Contact({ redirectToLinkedin }) {
             onChange={handleValues}
             value={formData.email}
           />
+          {errorMessage.email ? (
+            <span className="error-msg">{errorMessage.email}</span>
+          ) : null}
         </div>
         <div className="input-container">
           <label htmlFor="message">Your message: (*)</label>
@@ -63,10 +123,17 @@ export default function Contact({ redirectToLinkedin }) {
             onChange={handleValues}
             value={formData.message}
           ></textarea>
+          {errorMessage.message ? (
+            <span className="error-msg">{errorMessage.message}</span>
+          ) : null}
         </div>
       </form>
       <div className="contact-buttons">
-        <button className="button send-button">
+        <button
+          className="button send-button"
+          type="submit"
+          form="contact-form"
+        >
           Send <SendIcon />
         </button>
         <button className="button compose-button">

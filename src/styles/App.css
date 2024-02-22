@@ -18,6 +18,7 @@
     --secondary-color: #216869;
     --accent-color: #49A078;
     --highlight-color: #9CC5A1;
+    --error-color: rgb(255, 162, 162);
 }
 
 body {

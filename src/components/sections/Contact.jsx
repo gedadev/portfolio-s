@@ -4,8 +4,20 @@ import CreateIcon from "@mui/icons-material/Create";
 import ContentCopyIcon from "@mui/icons-material/ContentCopy";
 import PropTypes from "prop-types";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
+import { useState } from "react";
 
 export default function Contact({ redirectToLinkedin }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleValues = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
+
   return (
     <section className="contact-section" id="contact">
       <h2>Ready to collaborate?</h2>
@@ -24,7 +36,8 @@ export default function Contact({ redirectToLinkedin }) {
             placeholder="John Doe"
             id="name"
             autoComplete="off"
-            required
+            onChange={handleValues}
+            value={formData.name}
           />
         </div>
         <div className="input-container">
@@ -35,7 +48,8 @@ export default function Contact({ redirectToLinkedin }) {
             placeholder="jdoe@domain.com"
             id="email"
             autoComplete="off"
-            required
+            onChange={handleValues}
+            value={formData.email}
           />
         </div>
         <div className="input-container">
@@ -46,6 +60,8 @@ export default function Contact({ redirectToLinkedin }) {
             cols="30"
             rows="10"
             placeholder="Start typing..."
+            onChange={handleValues}
+            value={formData.message}
           ></textarea>
         </div>
       </form>

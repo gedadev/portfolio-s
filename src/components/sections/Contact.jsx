@@ -6,6 +6,9 @@ import CheckIcon from "@mui/icons-material/Check";
 import PropTypes from "prop-types";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import { useEffect, useState } from "react";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function Contact({ redirectToLinkedin }) {
   const [formData, setFormData] = useState({
@@ -52,16 +55,28 @@ export default function Contact({ redirectToLinkedin }) {
 
   const validateOnSubmit = (e) => {
     e.preventDefault();
+    const toastifyProps = {
+      position: "bottom-right",
+      autoClose: 1500,
+      theme: "dark",
+    };
 
-    if (e.target.checkValidity()) {
-      console.log("Message sent");
-      setFormData({
-        name: "",
-        email: "",
-        message: "",
+    axios
+      .post("https://vast-ruby-cuttlefish-robe.cyclic.app/send-email", formData)
+      .then((response) => {
+        toast.success(response.data, toastifyProps);
+
+        setFormData({
+          name: "",
+          email: "",
+          message: "",
+        });
+        setErrorMessage({});
+      })
+      .catch((error) => {
+        toast.error("Mail cannot be delivered in this moment", toastifyProps);
+        error;
       });
-      setErrorMessage({});
-    }
   };
 
   const emailIsValid = (email) => {
@@ -172,6 +187,7 @@ export default function Contact({ redirectToLinkedin }) {
           )}
         </button>
       </div>
+      <ToastContainer />
     </section>
   );
 }

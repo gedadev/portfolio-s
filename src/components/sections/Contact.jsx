@@ -62,7 +62,7 @@ export default function Contact({ redirectToLinkedin }) {
     };
 
     axios
-      .post("https://vast-ruby-cuttlefish-robe.cyclic.app/send-email", formData)
+      .post("https://email-sender-22pg.onrender.com/send-email", formData)
       .then((response) => {
         toast.success(response.data, toastifyProps);
 

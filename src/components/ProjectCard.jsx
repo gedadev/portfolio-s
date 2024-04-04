@@ -11,8 +11,31 @@ export default function ProjectCard({ project }) {
     window.open(project.url, "_blank");
   };
 
+  const handleHover = (e) => {
+    const card = e.target;
+    if (card.className === "project-card") {
+      const cardWidth = Math.round(card.getBoundingClientRect().width);
+      const cardHeight = Math.round(card.getBoundingClientRect().height);
+      const x = e.clientX - card.getBoundingClientRect().left;
+      const y = e.clientY - card.getBoundingClientRect().top;
+
+      if (x > cardWidth / 2 && y > cardHeight / 2) {
+        card.style.transform = "rotateX(-1deg) rotateY(0.5deg)";
+      }
+      if (x < cardWidth / 2 && y > cardHeight / 2) {
+        card.style.transform = "rotateX(-1deg) rotateY(-0.5deg)";
+      }
+      if (x > cardWidth / 2 && y < cardHeight / 2) {
+        card.style.transform = "rotateX(1deg) rotateY(0.5deg)";
+      }
+      if (x < cardWidth / 2 && y < cardHeight / 2) {
+        card.style.transform = "rotateX(1deg) rotateY(-0.5deg)";
+      }
+    }
+  };
+
   return (
-    <div className="project-card">
+    <div className="project-card" onMouseOver={handleHover}>
       <div className="project-info">
         <h3 className="project-title">{project.title}</h3>
         <p className="project-technologies">

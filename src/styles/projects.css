@@ -2,7 +2,6 @@
     width: 100%;
     height: auto;
     background: var(--highlight-color);
-    color: var(--main-color-dark);
     padding: 6vh 0;
     display: flex;
     flex-direction: column;
@@ -21,16 +20,23 @@
     align-items: center;
     justify-content: center;
     gap: 3rem;
+    perspective: 2000px;
 }
 
 .project-card {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 40% 60%;
+    background-color: var(--secondary-color);
+    box-shadow: 0 0 15px 4px var(--main-color-dark);
+    border-radius: 1rem;
+    transition: transform 0.5s ease;
 }
 
 .project-info {
     display: flex;
     flex-direction: column;
+    margin: 2rem;
+    color: var(--main-color-light);
 }
 
 .project-title {
@@ -47,7 +53,7 @@
 }
 
 .project-img {
-    margin: 0 1rem;
+    margin: 1rem;
 }
 
 .project-img > img {
@@ -73,15 +79,16 @@
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
+    color: var(--main-color-dark);
 }
 
 .project-button:hover {
     color: var(--main-color-light);
-    background-color: var(--secondary-color);
+    background-color: var(--main-color-dark);
     box-shadow: 1px 1px 8px var(--main-color-dark);
 }
 
-@media(max-width: 750px) {
+@media(max-width: 1000px) {
     .projects-section {
         gap: 2rem;
         padding: 4vh 0;
@@ -102,6 +109,6 @@
     }
 
     .project-img {
-        margin: 0;
+        margin: 0 1rem;
     }
 }

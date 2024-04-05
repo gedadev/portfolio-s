@@ -29,9 +29,9 @@ function ImageSlider({ images }) {
       <div className="images-container">
         {images.map((img) => (
           <img
-            key={img}
-            src={img}
-            alt=""
+            key={img.url}
+            src={img.url}
+            alt={img.alt}
             style={{ translate: `${-100 * currentIndex}%` }}
           />
         ))}

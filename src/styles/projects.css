@@ -61,13 +61,14 @@
 .preview-slider img {
     width: 100%;
     height: auto;
-    border-radius: 0.4rem;
-    transition: all 0.4s ease-in-out;
+    transition: all 0.6s ease-in-out;
 }
 
 .images-container {
+    border-radius: 0.6rem;
     display: flex;
     overflow: hidden;
+    box-shadow: 0 0 6px var(--main-color-dark);
 }
 
 .prev-arrow-container,
@@ -83,13 +84,13 @@
 }
 
 .prev-arrow-container {
-    border-radius: 0.4rem 0 0 0.4rem;
+    border-radius: 0.6rem 0 0 0.6rem;
     left: 0;
     background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 }
 
 .next-arrow-container {
-    border-radius: 0 0.4rem 0.4rem 0;
+    border-radius: 0 0.6rem 0.6rem 0;
     right: 0;
     background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 }
@@ -165,5 +166,9 @@
 
     .project-description {
         align-self: flex-start;
+    }
+
+    .preview-slider {
+        margin: 2rem 1rem;
     }
 }

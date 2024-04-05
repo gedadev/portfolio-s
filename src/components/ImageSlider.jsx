@@ -1,5 +1,5 @@
 import PropTypes from "prop-types";
-import { useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function ImageSlider({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -11,12 +11,18 @@ function ImageSlider({ images }) {
     });
   };
 
-  const getNextImage = () => {
+  const getNextImage = useCallback(() => {
     setCurrentIndex((index) => {
       if (index === images.length - 1) return 0;
       return index + 1;
     });
-  };
+  }, [images]);
+
+  useEffect(() => {
+    const intervalID = setInterval(() => getNextImage(), 4000);
+
+    return () => clearInterval(intervalID);
+  }, [getNextImage]);
 
   return (
     <div className="preview-slider">

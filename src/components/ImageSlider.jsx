@@ -1,17 +1,39 @@
 import PropTypes from "prop-types";
+import { useState } from "react";
 
 function ImageSlider({ images }) {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  const getPrevImage = () => {
+    setCurrentIndex((index) => {
+      if (index === 0) return images.length - 1;
+      return index - 1;
+    });
+  };
+
+  const getNextImage = () => {
+    setCurrentIndex((index) => {
+      if (index === images.length - 1) return 0;
+      return index + 1;
+    });
+  };
+
   return (
     <div className="preview-slider">
-      <div className="prev-arrow-container">
-        <span className="left-arrow"></span>
-      </div>
       <div className="images-container">
         {images.map((img) => (
-          <img key={img} src={img} alt="" />
+          <img
+            key={img}
+            src={img}
+            alt=""
+            style={{ translate: `${-100 * currentIndex}%` }}
+          />
         ))}
       </div>
-      <div className="next-arrow-container">
+      <div className="prev-arrow-container" onClick={getPrevImage}>
+        <span className="left-arrow"></span>
+      </div>
+      <div className="next-arrow-container" onClick={getNextImage}>
         <span className="right-arrow"></span>
       </div>
     </div>

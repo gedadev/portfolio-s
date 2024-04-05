@@ -26,6 +26,7 @@
 .project-card {
     display: grid;
     grid-template-columns: 40% 60%;
+    width: 100%;
     background-color: var(--secondary-color);
     box-shadow: 0 0 15px 4px var(--main-color-dark);
     border-radius: 1rem;
@@ -52,14 +53,72 @@
     font-size: 0.8rem;
 }
 
-.project-img {
-    margin: 1rem;
+.preview-slider {
+    margin: 2rem;
+    position: relative;
 }
 
-.project-img > img {
-    width: max(100%, 320px);
+.preview-slider img {
+    width: 100%;
     height: auto;
-    transition: transform 0.5s;
+    border-radius: 0.4rem;
+}
+
+.images-container {
+    display: flex;
+    overflow: hidden;
+}
+
+.prev-arrow-container,
+.next-arrow-container {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 4rem;
+    cursor: pointer;
+}
+
+.prev-arrow-container {
+    border-radius: 0.4rem 0 0 0.4rem;
+    left: 0;
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+    transition: all 3s ease-in-out;
+}
+
+.next-arrow-container {
+    border-radius: 0 0.4rem 0.4rem 0;
+    right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0));
+}
+
+.prev-arrow-container:hover > .left-arrow {
+    transform: translateX(-3px);
+}
+
+.next-arrow-container:hover > .right-arrow {
+    transform: translateX(3px);
+}
+
+.left-arrow,
+.right-arrow {
+    width: 0;
+    height: 0;
+    transition: all 0.2s ease-in-out;
+}
+
+.left-arrow {
+    border-right: 8px solid black;
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
+}
+
+.right-arrow {
+    border-left: 8px solid black;
+    border-bottom: 8px solid transparent;
+    border-top: 8px solid transparent;
 }
 
 .project-links {
@@ -106,9 +165,5 @@
 
     .project-description {
         align-self: flex-start;
-    }
-
-    .project-img {
-        margin: 0 1rem;
     }
 }

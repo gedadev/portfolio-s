@@ -1,6 +1,7 @@
 import PropTypes from "prop-types";
 import OpenInNewIcon from "@mui/icons-material/OpenInNew";
 import GitHubIcon from "@mui/icons-material/GitHub";
+import ImageSlider from "./ImageSlider";
 
 export default function ProjectCard({ project }) {
   const redirectToGithub = () => {
@@ -51,9 +52,7 @@ export default function ProjectCard({ project }) {
           </button>
         </div>
       </div>
-      <div className="project-img">
-        <img src={project.preview} alt="" />
-      </div>
+      <ImageSlider images={project.preview} />
     </div>
   );
 }

@@ -26,6 +26,10 @@ function ImageSlider({ images }) {
     return () => clearInterval(intervalID);
   }, [getNextImage]);
 
+  const selectImage = (index) => {
+    setCurrentIndex(index);
+  };
+
   return (
     <div className="preview-slider">
       <div className="images-container">
@@ -48,9 +52,9 @@ function ImageSlider({ images }) {
         {images.map((item, index) => (
           <Fragment key={item.url}>
             {index === currentIndex ? (
-              <RadioButtonCheckedIcon />
+              <RadioButtonCheckedIcon onClick={() => selectImage(index)} />
             ) : (
-              <RadioButtonUncheckedIcon />
+              <RadioButtonUncheckedIcon onClick={() => selectImage(index)} />
             )}
           </Fragment>
         ))}

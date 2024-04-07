@@ -86,12 +86,20 @@
 .prev-arrow-container {
     border-radius: 0.6rem 0 0 0.6rem;
     left: 0;
-    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
 }
 
 .next-arrow-container {
     border-radius: 0 0.6rem 0.6rem 0;
     right: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0));
+}
+
+.prev-arrow-container:hover {
+    background: linear-gradient(to right, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
+}
+
+.next-arrow-container:hover {
     background: linear-gradient(to left, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0));
 }
 
@@ -152,11 +160,16 @@
     position: absolute;
     bottom: 0;
     left: 50%;
-    transform: translate(-50%) scale(0.5);
+    transform: translate(-50%) ;
 }
 
 .navigation > * {
     cursor: pointer;
+    max-width: 12px;
+}
+
+.navigation > *:hover {
+    transform: scale(1.1);
 }
 
 @media(max-width: 1000px) {

@@ -158,7 +158,6 @@
 
 .navigation {
     position: absolute;
-    bottom: 0;
     left: 50%;
     transform: translate(-50%) ;
 }
@@ -166,6 +165,8 @@
 .navigation > * {
     cursor: pointer;
     max-width: 12px;
+    color: var(--main-color-light);
+    margin: 0 0.1rem;
 }
 
 .navigation > *:hover {

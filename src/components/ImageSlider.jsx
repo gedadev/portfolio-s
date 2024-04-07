@@ -1,5 +1,7 @@
 import PropTypes from "prop-types";
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useState, Fragment } from "react";
+import RadioButtonUncheckedIcon from "@mui/icons-material/RadioButtonUnchecked";
+import RadioButtonCheckedIcon from "@mui/icons-material/RadioButtonChecked";
 
 function ImageSlider({ images }) {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -19,7 +21,7 @@ function ImageSlider({ images }) {
   }, [images]);
 
   useEffect(() => {
-    const intervalID = setInterval(() => getNextImage(), 4000);
+    const intervalID = setInterval(() => getNextImage(), 10000);
 
     return () => clearInterval(intervalID);
   }, [getNextImage]);
@@ -41,6 +43,17 @@ function ImageSlider({ images }) {
       </div>
       <div className="next-arrow-container" onClick={getNextImage}>
         <span className="right-arrow"></span>
+      </div>
+      <div className="navigation">
+        {images.map((item, index) => (
+          <Fragment key={item.url}>
+            {index === currentIndex ? (
+              <RadioButtonCheckedIcon />
+            ) : (
+              <RadioButtonUncheckedIcon />
+            )}
+          </Fragment>
+        ))}
       </div>
     </div>
   );

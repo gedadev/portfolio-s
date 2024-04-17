@@ -26,7 +26,10 @@ export default function About() {
           </div>
         </div>
         <div className="about-img">
-          <img src="https://i.imgur.com/vQAHiFX.png" alt="Picture of me" />
+          <img
+            src="https://i.ibb.co/vz7Df8V/about-image.png"
+            alt="Picture of me"
+          />
         </div>
       </div>
     </section>

@@ -10,9 +10,10 @@ export default function Header() {
   const [menuIsActive, setMenuIsActive] = useState(false);
   const [langSelectorActive, setLangSelectorActive] = useState(false);
   const links = {
-    homeImage: "https://i.imgur.com/Qbk1CWd.png",
-    enCV: "https://drive.google.com/file/d/1r7TfEenzDz0Hv7UbYdxYNJGKU73Wo5pP/view?usp=sharing",
-    esCV: "https://drive.google.com/file/d/1Cggp-gEBZD7py5wzUdUL-XaSCZ9YkfJ3/view?usp=sharing",
+    homeImage:
+      "https://i.ibb.co/XyHZyRm/4723548-astronaut-astronomy-cosmonaut-galaxy-science-icon.png",
+    enCV: "https://drive.google.com/file/d/12QY6ERKRjfxbj34D4KUggSN0aj3gkHHS/",
+    esCV: "https://drive.google.com/file/d/1ixsxGBngVX6-pmgnw-BZT19MU6CQma3y/",
   };
 
   useEffect(() => {

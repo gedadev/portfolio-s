@@ -21,6 +21,10 @@ const projectsDetails = [
         url: 'https://i.ibb.co/SBgZxM8/Screenshot-2024-04-15-at-22-16-44.png',
         alt: 'displayed menu'
       },
+      {
+        url: 'https://i.ibb.co/74VcwJF/Screenshot-2024-05-02-at-21-30-46.png',
+        alt: 'contact section'
+      },
     ],
   },
   {

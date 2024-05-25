@@ -8,7 +8,7 @@ const projectsDetails = [
     description:
       "This application shows all the champions of a summoner providing the game name and the tag line, showing information like the champion level, the champion points and other information provided by the official Riot Games API.",
     repo: "https://github.com/gedadev/lol-mastery",
-    url: "https://lol-mastery.pages.dev/summoner",
+    url: "https://lol-mastery.pages.dev/",
     preview: [
       {
         url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/lol-champs-app/screen1.png",

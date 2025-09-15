@@ -1,89 +1,127 @@
 import { v4 as uuidv4 } from "uuid";
 
+const BUCKET_URL = import.meta.env.VITE_BUCKET_URL;
+
 const projectsDetails = [
   {
     id: uuidv4(),
-    title: "E-commerce Store",
-    technologies: "react, javascript, html, css",
+    title: "Appointment Manager",
+    emoji: "📅",
+    technologies: "React, CSS, Node.js, MongoDB, Express, JWT",
     description:
-      "An e-commerce application offers utilities like a shopping cart, a product catalog and a login section. With the possibility to add more useful features to enhance the shopping experience.",
-    repo: "https://github.com/gedadev/ecommerce",
-    url: "https://ecommerce-96b.pages.dev",
+      "Appointment manager system that allow businesses to handle customers and schedule appointments. Includes user authentication and a profile page to personalize business information and working hours.",
+    keyPoints: [
+      "Login and signup with JWT authentication",
+      "CRUD for users and appointments",
+      "Working hours and business information management",
+      "MongoDB for data persistence",
+    ],
+    repo: "https://github.com/gedadev/appointment-manager/",
+    url: "https://appointment-manager.pages.dev",
     preview: [
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/ecommerce/1.png",
-        alt: "Home page view",
+        url: `${BUCKET_URL}appointment-manager/1.png`,
+        alt: "Landing page",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/ecommerce/2.png",
-        alt: "Products page view",
+        url: `${BUCKET_URL}appointment-manager/2.png`,
+        alt: "Login page",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/ecommerce/3.png",
-        alt: "Product filtering",
+        url: `${BUCKET_URL}appointment-manager/3.png`,
+        alt: "Dashboard view",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/ecommerce/4.png",
-        alt: "Product details page",
+        url: `${BUCKET_URL}appointment-manager/4.png`,
+        alt: "Appointments created",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/ecommerce/5.png",
-        alt: "Cart page view",
+        url: `${BUCKET_URL}appointment-manager/5.png`,
+        alt: "Appointment modal",
+      },
+      {
+        url: `${BUCKET_URL}appointment-manager/6.png`,
+        alt: "Profile page",
+      },
+      {
+        url: `${BUCKET_URL}appointment-manager/7.png`,
+        alt: "Working hours page",
       },
     ],
   },
   {
     id: uuidv4(),
-    title: "Lol Champions Mastery",
-    technologies: "react, javascript, html, tailwindcss",
+    title: "League of Legends Mastery Tracker",
+    emoji: "🎮",
+    technologies: "React, TailwindCSS, Node.js, Express, API REST",
     description:
-      "This application shows the mastery level of a player's champions, displaying information such as the champion level, the champion mastery points and other data provided by the public Riot Games API.",
+      "This application consumes the Riot Games API to show the champions of a player ordered by mastery level. Allow advanced filtering to explore the performance of the player.",
+    keyPoints: [
+      "Integration with the Riot Games official API",
+      "Filters by champion role, difficulty and mastery level",
+      "Detailed view for each champion",
+      "Backend with Express to handle API requests",
+    ],
     repo: "https://github.com/gedadev/lol-mastery",
     url: "https://lol-mastery.pages.dev/",
     preview: [
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/lol-mastery/1.png",
+        url: `${BUCKET_URL}lol-mastery/1.png`,
         alt: "Home view with search bar and top players",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/lol-mastery/2.png",
+        url: `${BUCKET_URL}lol-mastery/2.png`,
         alt: "Player champions view",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/lol-mastery/3.png",
+        url: `${BUCKET_URL}lol-mastery/3.png`,
         alt: "Champion stats toggled",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/lol-mastery/4.png",
+        url: `${BUCKET_URL}lol-mastery/4.png`,
         alt: "Champion page details",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/lol-mastery/5.png",
+        url: `${BUCKET_URL}lol-mastery/5.png`,
         alt: "Champion page end",
       },
     ],
   },
-
   {
     id: uuidv4(),
-    title: "Weather Report App",
-    technologies: "react, javascript, html, css",
+    title: "E-commerce Store",
+    emoji: "🛒",
+    technologies: "React, Javascript, Context API, CSS",
     description:
-      'A weather app created with the "weather API". This app can show the forecast on your current location if you allow the location permission, otherwise you can search for a city to get the respective forecast',
-    repo: "https://github.com/gedadev/weather-app",
-    url: "https://weather-app-er8.pages.dev/",
+      "Online store with a products catalog, search and filtering, and a shopping cart functionality. The data is fetched from dummyjson utility to simulate the complete process of an e-commerce store",
+    keyPoints: [
+      "Dynamic product listing",
+      "Filtering by category and brand",
+      "Shopping cart with local persistence",
+      "Checkout simulation",
+    ],
+    repo: "https://github.com/gedadev/ecommerce",
+    url: "https://ecommerce-96b.pages.dev",
     preview: [
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/weather/1.png",
-        alt: "forecast preview",
+        url: `${BUCKET_URL}ecommerce/1.png`,
+        alt: "Home page view",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/weather/2.png",
-        alt: "end slider preview",
+        url: `${BUCKET_URL}ecommerce/2.png`,
+        alt: "Products page view",
       },
       {
-        url: "https://pub-1d0f11ab543f45ecb624359bc1a436a7.r2.dev/portfolio%20assets/weather/3.png",
-        alt: "search city preview",
+        url: `${BUCKET_URL}ecommerce/3.png`,
+        alt: "Product filtering",
+      },
+      {
+        url: `${BUCKET_URL}ecommerce/4.png`,
+        alt: "Product details page",
+      },
+      {
+        url: `${BUCKET_URL}ecommerce/5.png`,
+        alt: "Cart page view",
       },
     ],
   },

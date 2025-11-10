@@ -8,16 +8,17 @@ export default function About() {
         <div className="about-info">
           <h2 className="about-title">About Me</h2>
           <p className="about-description">
-            As a software engineer, I find web development to be an excellent
-            field where I can apply my skills in building software. Motivated by
-            a lifelong learning philosophy, I enjoy transforming ideas into
-            code.
+            I'm a full-stack web developer, I build modern and user-friendly
+            applications. I specialize in React for the frontend and Node.js for
+            backend services, creating complete web applications. I'm always
+            learning and looking to collaborate helping clients turn their ideas
+            into great digital experiences.
           </p>
           <div className="technologies-container">
-            <h3>Technologies I&apos;m familiar with:</h3>
+            <h3>Technologies I use:</h3>
             <ul>
               {technologies.map((element) => (
-                <li key={element.name} className="tech-item">
+                <li key={element.id} className="tech-item">
                   <img src={element.icon} alt={element.name} />
                   <p>{element.name}</p>
                 </li>

@@ -12,8 +12,8 @@ export default function Header() {
   const links = {
     homeImage:
       "https://i.ibb.co/XyHZyRm/4723548-astronaut-astronomy-cosmonaut-galaxy-science-icon.png",
-    enCV: "https://drive.google.com/file/d/1Usbkhn2xjOJt2bKkDr6e8H39lQKUYUIP/",
-    esCV: "https://drive.google.com/file/d/12Hz7P0eY8B-tw5qyjx66V3UxUAx4Rdg2/",
+    enCV: "https://drive.google.com/file/d/1hm9w9-SWn_o8LBIgmban3cQZEtGnkUUt/",
+    esCV: "https://drive.google.com/file/d/1xr9crnt2pSi6ho0Jr7m1kzHZULXrbtmo/",
   };
 
   useEffect(() => {

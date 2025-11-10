@@ -5,6 +5,56 @@ const BUCKET_URL = import.meta.env.VITE_BUCKET_URL;
 const projectsDetails = [
   {
     id: uuidv4(),
+    title: "Expenses Manager",
+    emoji: "💰",
+    technologies: "React, TailwindCSS, Node.js, TypeScript, MongoDB, JWT",
+    description:
+      "An expenses tracking system with categorization to provide visibility into where your money goes and to allow you to define budgets for controlling your expenses.",
+    keyPoints: [
+      "Secure authentication with JWT and token rotation",
+      "Complete CRUD for expenses, categories and budgets",
+      "MongoDB for data persistence",
+      "Responsive design with TailwindCSS",
+    ],
+    repo: "https://github.com/gedadev/budget-manager",
+    url: "https://budget-manager-58f.pages.dev",
+    preview: [
+      {
+        url: `${BUCKET_URL}budget-manager/1.png`,
+        alt: "Landing page",
+      },
+      {
+        url: `${BUCKET_URL}budget-manager/2.png`,
+        alt: "Auth page",
+      },
+      {
+        url: `${BUCKET_URL}budget-manager/3.png`,
+        alt: "Create account page",
+      },
+      {
+        url: `${BUCKET_URL}budget-manager/4.png`,
+        alt: "Dashboard view",
+      },
+      {
+        url: `${BUCKET_URL}budget-manager/5.png`,
+        alt: "Categories management page",
+      },
+      {
+        url: `${BUCKET_URL}budget-manager/6.png`,
+        alt: "New category dialog",
+      },
+      {
+        url: `${BUCKET_URL}budget-manager/7.png`,
+        alt: "Categories list view",
+      },
+      {
+        url: `${BUCKET_URL}budget-manager/8.png`,
+        alt: "Expenses list view",
+      },
+    ],
+  },
+  {
+    id: uuidv4(),
     title: "Appointment Manager",
     emoji: "📅",
     technologies: "React, CSS, Node.js, MongoDB, Express, JWT",
